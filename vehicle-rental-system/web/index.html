@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DriveRent — Rent Your Perfect Ride</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Drive<span>Rent</span></div>
+  <nav class="main-nav">
+    <a href="#home">Home</a>
+    <a href="#vehicles">Vehicles</a>
+    <a href="#rentals">Rentals</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-road"></div>
+  <div class="hero-content">
+    <h1>Rent Your Perfect Ride</h1>
+    <p>Choose your vehicle and rental plan</p>
+    <a href="#vehicles" class="btn btn-primary">Start now</a>
+  </div>
+</section>
+
+<section class="vehicles" id="vehicles">
+  <h2>1. Pick a vehicle</h2>
+  <div class="vehicle-cards">
+
+    <button type="button" class="vehicle-card active" data-vehicle="car">
+      <svg viewBox="0 0 120 60" class="vehicle-icon">
+        <path d="M12 40 L20 22 Q24 16 34 16 L82 16 Q92 16 96 22 L104 40 L104 46 L96 46 Q96 40 88 40 Q80 40 80 46 L40 46 Q40 40 32 40 Q24 40 24 46 L12 46 Z" />
+        <circle cx="32" cy="46" r="7"/>
+        <circle cx="88" cy="46" r="7"/>
+        <path d="M28 30 L34 20 L74 20 L80 30 Z" class="vehicle-window"/>
+      </svg>
+      <span class="vehicle-label">Car</span>
+      <span class="vehicle-sub">Compact &amp; efficient</span>
+    </button>
+
+    <button type="button" class="vehicle-card" data-vehicle="motorcycle">
+      <svg viewBox="0 0 120 60" class="vehicle-icon">
+        <circle cx="28" cy="46" r="10"/>
+        <circle cx="92" cy="46" r="10"/>
+        <path d="M28 46 L48 30 L64 30 L58 46 M64 30 L78 18 M78 18 L92 46 M48 30 L44 22 L58 22" class="vehicle-frame"/>
+      </svg>
+      <span class="vehicle-label">Motorcycle</span>
+      <span class="vehicle-sub">Light &amp; agile</span>
+    </button>
+
+    <button type="button" class="vehicle-card" data-vehicle="suv">
+      <svg viewBox="0 0 120 60" class="vehicle-icon">
+        <path d="M10 42 L14 24 Q17 14 30 14 L86 14 Q98 14 102 24 L108 42 L108 48 L98 48 Q98 42 90 42 Q82 42 82 48 L38 48 Q38 42 30 42 Q22 42 22 48 L10 48 Z" />
+        <circle cx="30" cy="48" r="7.5"/>
+        <circle cx="90" cy="48" r="7.5"/>
+        <path d="M22 28 L26 18 L58 18 L58 28 Z M62 28 L62 18 L82 18 L88 28 Z" class="vehicle-window"/>
+      </svg>
+      <span class="vehicle-label">SUV</span>
+      <span class="vehicle-sub">Room for everything</span>
+    </button>
+
+  </div>
+</section>
+
+<section class="rental-form-section" id="rentals">
+  <h2>2. Set up your rental</h2>
+
+  <div class="rental-layout">
+    <form id="rental-form" class="rental-form">
+      <input type="hidden" id="vehicle-type" name="vehicle" value="car">
+
+      <div class="field">
+        <label for="plan">Rental plan</label>
+        <select id="plan" name="plan">
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label id="duration-label" for="duration">Number of days</label>
+        <input type="number" id="duration" name="duration" min="1" value="1">
+      </div>
+
+      <div class="field">
+        <label for="customer">Customer name</label>
+        <input type="text" id="customer" name="customer" placeholder="Enter your name" autocomplete="off">
+      </div>
+
+      <p id="form-error" class="form-error hidden">Please enter the customer name.</p>
+
+      <div class="form-actions">
+        <button type="button" id="calculate-btn" class="btn btn-secondary">Calculate Rental</button>
+        <button type="button" id="confirm-btn" class="btn btn-primary" disabled>Confirm Rental</button>
+      </div>
+    </form>
+
+    <div id="result-card" class="result-card hidden">
+      <h3>Rental Summary</h3>
+      <dl class="result-grid">
+        <dt>Customer</dt><dd id="res-customer">—</dd>
+        <dt>Vehicle</dt><dd id="res-vehicle">—</dd>
+        <dt>Plan</dt><dd id="res-plan">—</dd>
+        <dt>Duration</dt><dd id="res-duration">—</dd>
+        <dt id="res-period-label">Price per day</dt><dd id="res-period-price">—</dd>
+        <dt>Total</dt><dd id="res-total" class="result-total">—</dd>
+      </dl>
+      <p id="res-status" class="result-status">✓ Rental calculated successfully</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>DriveRent — Vehicle Rental System · Software Design Patterns Assignment</p>
+  <p class="footer-note">Built with the Adapter Pattern (vehicle providers) and the Bridge Pattern (rental plan × vehicle type).</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

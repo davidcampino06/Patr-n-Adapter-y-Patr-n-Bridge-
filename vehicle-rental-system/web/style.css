@@ -1,0 +1,356 @@
+:root {
+  --asphalt: #15171B;
+  --asphalt-soft: #21242B;
+  --cream: #F6F4EE;
+  --steel: #3E6680;
+  --amber: #E8A33D;
+  --amber-dark: #C7842A;
+  --ink: #1B1D22;
+  --line: #DAD5C8;
+  --success: #4C7A5E;
+
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Inter", -apple-system, Segoe UI, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+/* ---------- Header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 6vw;
+  background: var(--asphalt);
+  color: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.logo span { color: var(--amber); }
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--cream);
+  margin-left: 32px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.main-nav a:hover { opacity: 1; }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  background: var(--asphalt);
+  color: var(--cream);
+  padding: 100px 6vw 140px;
+  overflow: hidden;
+}
+
+.hero-road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 48px;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--amber) 0px,
+    var(--amber) 44px,
+    transparent 44px,
+    transparent 84px
+  );
+  opacity: 0.55;
+}
+
+.hero-content { max-width: 640px; }
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 1.02;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: #C8C6BD;
+  margin-bottom: 34px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 26px;
+  border-radius: 3px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--amber);
+  color: var(--asphalt);
+}
+
+.btn-primary:hover:not(:disabled) { background: var(--amber-dark); }
+
+.btn-primary:disabled {
+  background: #D8D2C2;
+  color: #8B8778;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.btn-secondary:hover { background: var(--ink); color: var(--cream); }
+
+/* ---------- Vehicles ---------- */
+
+.vehicles {
+  padding: 70px 6vw 40px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.vehicles h2, .rental-form-section h2 {
+  font-size: 1.9rem;
+  margin-bottom: 28px;
+  border-left: 5px solid var(--amber);
+  padding-left: 14px;
+}
+
+.vehicle-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.vehicle-card {
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(21, 23, 27, 0.08);
+}
+
+.vehicle-card.active {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 1px var(--amber);
+}
+
+.vehicle-icon {
+  width: 100%;
+  height: 60px;
+  fill: var(--steel);
+  margin-bottom: 14px;
+}
+
+.vehicle-card.active .vehicle-icon { fill: var(--amber-dark); }
+
+.vehicle-window { fill: var(--cream); }
+
+.vehicle-frame {
+  fill: none;
+  stroke: var(--steel);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vehicle-card.active .vehicle-frame { stroke: var(--amber-dark); }
+
+.vehicle-label {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.vehicle-sub {
+  font-size: 0.85rem;
+  color: #726F63;
+  margin-top: 2px;
+}
+
+/* ---------- Rental form ---------- */
+
+.rental-form-section {
+  padding: 50px 6vw 90px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.rental-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.rental-form {
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  padding: 30px;
+}
+
+.field { margin-bottom: 20px; }
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #55524A;
+}
+
+.field select,
+.field input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.field select:focus,
+.field input:focus {
+  outline: none;
+  border-color: var(--steel);
+}
+
+.form-error {
+  color: #B03A2E;
+  font-size: 0.85rem;
+  margin: -8px 0 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Result card ---------- */
+
+.result-card {
+  background: var(--asphalt);
+  color: var(--cream);
+  border-radius: 4px;
+  padding: 30px;
+  border-left: 6px solid var(--amber);
+}
+
+.result-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: 12px;
+  column-gap: 16px;
+  margin: 0 0 20px;
+}
+
+.result-grid dt {
+  color: #A6A399;
+  font-size: 0.85rem;
+  align-self: center;
+}
+
+.result-grid dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 500;
+}
+
+.result-total {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--amber);
+}
+
+.result-status {
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  color: #8FD3A8;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.hidden { display: none; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--asphalt-soft);
+  color: #A6A399;
+  text-align: center;
+  padding: 28px 6vw;
+  font-size: 0.85rem;
+}
+
+.footer-note { margin-top: 6px; opacity: 0.8; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 780px) {
+  .rental-layout { grid-template-columns: 1fr; }
+  .main-nav a { margin-left: 18px; }
+  .hero { padding: 70px 6vw 100px; }
+}
